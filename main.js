@@ -1,11 +1,12 @@
 // //1 Show me how to calculate the average price of all items.
 var price = 0;
 var avgPrice = 0;
-items.forEach(function(b) {
+var avgPrice = items.forEach(function(b) {
 	price += b.price;
-	avgPrice = price/items.length
+})
 
-});
+avgPrice = price/items.length;
+
 var answer1 = "Average price is $" + avgPrice.toFixed(2)
 
 document.getElementById('answer1').innerHTML = answer1
@@ -19,20 +20,22 @@ items.filter(function(c) {
 	if (c.price > 14 && c.price < 18) {
 		filterItems.push(c.title)
 	}
-})
+		console.log(c.user_id)
+}); 
 
 document.getElementById('answer2').innerHTML = filterItems
 
 
 //3 Which item has a "GBP" currency code? Display it's name and price.
 var gbpItem = "" 
+
 items.filter(function(d) {
 	if (d.currency_code === "GBP") {
-		gbpItem += "Item: " + d.title + "Price: $" + d.price
+		return gbpItem += "Item: " + d.title + "Price: $" + d.price
 	}
 })
 
-console.log(gbpItem)
+
 
 document.getElementById('answer3').innerHTML = gbpItem
 
