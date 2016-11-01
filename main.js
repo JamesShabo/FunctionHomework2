@@ -14,30 +14,39 @@ document.getElementById('answer1').innerHTML = answer1
 
 //2 Show me how to get an array of items that cost between $14.00 and $18.00 USD
 
-var filterItems = [];
-
-items.filter(function(c) {
+var filteritems = items.filter(function(c) {
 	if (c.price > 14 && c.price < 18) {
-		filterItems.push(c.title)
+		return true
 	}
-		console.log(c.user_id)
 }); 
 
-document.getElementById('answer2').innerHTML = filterItems
+var filteredHtml = '<ul>'
+filteritems.forEach(function(item){
+	filteredHtml += "<li>" + item.title + "</li>" 
+
+})
+filteredHtml += '</ul>'
+
+document.getElementById('answer2').innerHTML = filteredHtml
 
 
 //3 Which item has a "GBP" currency code? Display it's name and price.
-var gbpItem = "" 
 
-items.filter(function(d) {
+var gbpItem = items.filter(function(d) {
 	if (d.currency_code === "GBP") {
-		return gbpItem += "Item: " + d.title + "Price: $" + d.price
+		return true
 	}
+});
+
+var filteredGBP = '<ul>'
+gbpItem.forEach(function(gbp){
+	filteredGBP += "<li>" + gbp.title + " " + gbp.price + "</li>"
 })
 
+filteredGBP += "</ul>"
 
 
-document.getElementById('answer3').innerHTML = gbpItem
+document.getElementById('answer3').innerHTML = filteredGBP
 
 
 //4 Display a list of all items who are made of wood.
